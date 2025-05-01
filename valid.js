@@ -17,7 +17,7 @@ import {
   where,
   updateDoc,
 } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
-import { app, db } from "/firebase/init.js";
+import { app, db } from "firebase/init.js";
 
 const googleProvider = new GoogleAuthProvider();
 const auth = getAuth(app);
