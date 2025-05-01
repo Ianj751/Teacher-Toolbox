@@ -1,5 +1,5 @@
 //import { protectRoute } from "../firebase/init.js";
-import { auth } from "./firebase/init.js";
+import { auth } from "../firebase/init.js";
 import { signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 //protectRoute();
 var menuButton = document.getElementById("menuButton");
