@@ -1,17 +1,27 @@
-import { db } from '../../firebase/init.js';
-import { collection, getDocs, doc, getDoc, addDoc, updateDoc } from 'https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js';
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+import { db } from "../../firebase/init.js";
+import {
+  collection,
+  getDocs,
+  doc,
+  getDoc,
+  addDoc,
+  updateDoc,
+} from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+import {
+  getAuth,
+  onAuthStateChanged,
+} from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 
 const auth = getAuth();
 let attendanceChanges = [];
-document.getElementById('date').valueAsDate = new Date();
+document.getElementById("date").valueAsDate = new Date();
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
     const uid = user.uid;
     console.log("User UID:", uid);
     loadStudents(uid); // Load students for this user
-    
+
     // Add event listener for date changes
     document.getElementById("date").addEventListener("change", () => {
       // Clear attendance changes when date changes
@@ -26,9 +36,11 @@ onAuthStateChanged(auth, (user) => {
 
 async function loadStudents(uid) {
   try {
-    const querySnapshot = await getDocs(collection(db, 'users', uid, 'students'));
-    const outputDiv = document.getElementById('output');
-    outputDiv.innerHTML = ''; // clear
+    const querySnapshot = await getDocs(
+      collection(db, "users", uid, "students")
+    );
+    const outputDiv = document.getElementById("output");
+    outputDiv.innerHTML = ""; // clear
 
     // Add a header row
     outputDiv.innerHTML = `
@@ -41,26 +53,27 @@ async function loadStudents(uid) {
       </div>
     `;
 
-    querySnapshot.forEach(docSnap => {
+    querySnapshot.forEach((docSnap) => {
       const data = docSnap.data();
       const studentId = docSnap.id;
       const date = document.getElementById("date").value;
       const attendance = data.attendance || {};
-      const isPresent = attendance[date]?.status === 'present';
-      const isAbsent = attendance[date]?.status === 'absent';
+      const isPresent = attendance[date]?.status === "present";
+      const isAbsent = attendance[date]?.status === "absent";
 
       // Create status indicator text
-      let statusText = '';
+      let statusText = "";
       if (isPresent) {
-        statusText = '<span style="color: green; font-weight: bold;">Present</span>';
+        statusText =
+          '<span style="color: green; font-weight: bold;">Present</span>';
       } else if (isAbsent) {
-        statusText = '<span style="color: red; font-weight: bold;">Absent</span>';
+        statusText =
+          '<span style="color: red; font-weight: bold;">Absent</span>';
       } else {
         statusText = '<span style="color: gray;">Not recorded</span>';
       }
 
-      outputDiv.innerHTML +=
-       `<div class="student-row">
+      outputDiv.innerHTML += `<div class="student-row">
           <div class="student-info">
           <strong>Name:</strong> ${data.firstName} ${data.lastName} - 
           <strong>ID:</strong> ${data.iD} 
@@ -71,11 +84,11 @@ async function loadStudents(uid) {
           <div class="attendance-options">
             <input type="checkbox" 
                    id="present-${studentId}" 
-                   ${isPresent ? 'checked' : ''} 
+                   ${isPresent ? "checked" : ""} 
                    onchange="addList('${studentId}', 'present', this.checked)">
             <input type="checkbox" 
                    id="absent-${studentId}" 
-                   ${isAbsent ? 'checked' : ''} 
+                   ${isAbsent ? "checked" : ""} 
                    onchange="addList('${studentId}', 'absent', this.checked)">
           </div>
         </div>`;
@@ -88,52 +101,54 @@ async function loadStudents(uid) {
 // Fixed addList function to store objects with all necessary information
 function addList(studentId, status, checked) {
   // Remove any existing entry for this student
-  attendanceChanges = attendanceChanges.filter(item => item.studentId !== studentId);
-  
+  attendanceChanges = attendanceChanges.filter(
+    (item) => item.studentId !== studentId
+  );
+
   // Add new entry if checked
   if (checked) {
     attendanceChanges.push({
       studentId: studentId,
       status: status,
-      checked: checked
+      checked: checked,
     });
   }
-  
+
   // If this is a present checkbox being checked, uncheck the absent checkbox
-  if (status === 'present' && checked) {
+  if (status === "present" && checked) {
     document.getElementById(`absent-${studentId}`).checked = false;
   }
-  
+
   // If this is an absent checkbox being checked, uncheck the present checkbox
-  if (status === 'absent' && checked) {
+  if (status === "absent" && checked) {
     document.getElementById(`present-${studentId}`).checked = false;
   }
-  
+
   console.log("Current attendance changes:", attendanceChanges);
 }
 
 // Fixed submit button event listener
-document.getElementById("sub").addEventListener('click', async (event) => {
+document.getElementById("sub").addEventListener("click", async (event) => {
   event.preventDefault();
-  
+
   // Check if date is selected
   const date = document.getElementById("date").value;
   if (!date) {
     alert("Please select a date before taking attendance.");
     return;
   }
-  
+
   console.log("Submitting attendance changes:", attendanceChanges);
-  
+
   // Process each attendance change
   for (let i = 0; i < attendanceChanges.length; i++) {
     const change = attendanceChanges[i];
     await updateAttendance(change.studentId, change.status, change.checked);
   }
-  
+
   // Clear the attendance changes array after processing
   attendanceChanges = [];
-  
+
   // Reload the student list to show updated attendance
   const user = auth.currentUser;
   if (user) {
@@ -158,70 +173,74 @@ async function updateAttendance(studentId, status, checked) {
     }
 
     //variables for easier access
-    const studentRef = doc(db, 'users', user.uid, 'students', studentId);
+    const studentRef = doc(db, "users", user.uid, "students", studentId);
     const studentDoc = await getDoc(studentRef);
-    
+
     if (!studentDoc.exists()) {
       console.error("Student not found.");
       return;
     }
 
     const studentData = studentDoc.data();
-    
+
     // Initialize attendance object if it doesn't exist
     const attendance = studentData.attendance || {};
-    
+
     // Check if attendance was already recorded for this date
     const wasAlreadyRecorded = attendance[date] !== undefined;
     const previousStatus = wasAlreadyRecorded ? attendance[date].status : null;
-    
+
     if (checked) {
       // If checking a box, update the attendance
       attendance[date] = {
         status: status,
         timestamp: new Date(),
-        notes: ''
+        notes: "",
       };
 
       // Update the counter
-      const counterField = status === 'present' ? 'present' : 'absent';
-      const otherStatus = status === 'present' ? 'absent' : 'present';
-      
+      const counterField = status === "present" ? "present" : "absent";
+      const otherStatus = status === "present" ? "absent" : "present";
+
       // Increment the selected status counter
       const counterValue = (studentData[counterField] || 0) + 1;
-      
+
       // Only decrement the other status counter if it was previously recorded
       let otherCounterValue = studentData[otherStatus] || 0;
       if (wasAlreadyRecorded && previousStatus === otherStatus) {
         otherCounterValue = Math.max(0, otherCounterValue - 1);
       }
-      
+
       await updateDoc(studentRef, {
         attendance: attendance,
         [counterField]: counterValue,
-        [otherStatus]: otherCounterValue
+        [otherStatus]: otherCounterValue,
       });
 
-      console.log(`Updated ${status} status for student ${studentId} on date: ${date}`);
+      console.log(
+        `Updated ${status} status for student ${studentId} on date: ${date}`
+      );
     } else {
       // If unchecking a box, remove the attendance record
       delete attendance[date];
 
       // Update the counter - only decrement if it was previously recorded
-      const counterField = status === 'present' ? 'present' : 'absent';
-      
+      const counterField = status === "present" ? "present" : "absent";
+
       // Only decrement if this status was previously recorded
       let counterValue = studentData[counterField] || 0;
       if (wasAlreadyRecorded && previousStatus === status) {
         counterValue = Math.max(0, counterValue - 1);
       }
-      
+
       await updateDoc(studentRef, {
         attendance: attendance,
-        [counterField]: counterValue
+        [counterField]: counterValue,
       });
-      
-      console.log(`Removed ${status} status for student ${studentId} on date: ${date}`);
+
+      console.log(
+        `Removed ${status} status for student ${studentId} on date: ${date}`
+      );
     }
   } catch (error) {
     console.error(`Error updating ${status} status:`, error);
