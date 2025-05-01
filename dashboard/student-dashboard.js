@@ -125,7 +125,7 @@ console.log("Session Storage Data:", sessionStorage);
 // Check if user is logged in
 auth.onAuthStateChanged((user) => {
   if (!user) {
-    window.location.href = "-/Teacher-Toolbox/index.html";
+    window.location.href = "../index.html";
     return;
   }
 

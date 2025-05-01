@@ -82,7 +82,7 @@ function createUserIfNotExists(email, password) {
       .then((userCredential) => {
         console.log("User exists, signed in:", userCredential.user.email);
         resolve(userCredential.user);
-        window.location.href = "/Teacher-Toolbox/dashboard/dashboard.html";
+        window.location.href = "./dashboard/dashboard.html";
       })
       .catch((error) => {
         handleAuthError(error);
@@ -183,8 +183,7 @@ async function handleStudentLogin() {
       });
 
       // Redirect to student dashboard
-      window.location.href =
-        "/Teacher-Toolbox/dashboard/student-dashboard.html";
+      window.location.href = "./dashboard/student-dashboard.html";
     } else {
       displayError(
         "Student not found. Please check your information and try again."
@@ -225,7 +224,7 @@ googleSignInBtn.addEventListener("click", async () => {
         lastLogin: new Date(),
       });
     }
-    window.location.href = "/Teacher-Toolbox/dashboard/dashboard.html";
+    window.location.href = "./dashboard/dashboard.html";
   } catch (error) {
     handleAuthError(error);
   }

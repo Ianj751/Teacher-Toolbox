@@ -39,8 +39,7 @@ form.addEventListener("submit", (e) => {
       .then((userCredential) => {
         // Signed in successfully
         const user = auth.currentUser;
-        window.location.pathname =
-          "/Teacher-Toolbox/dashboard/student-dashboard.html";
+        window.location.pathname = "./dashboard/student-dashboard.html";
       })
       .catch((error) => {
         e.preventDefault();

@@ -36,7 +36,7 @@ if (studentFirstName && studentLastName && studentId && teacherUid) {
       console.log("Teacher signed in:", currentUser);
       user = currentUser.uid;
       isTeacher = true;
-      outputDiv.innerHTML = `<a href="/Teacher-Toolbox/dashboard/dashboard.html">Home</a>`;
+      outputDiv.innerHTML = `<a href="../dashboard.html">Home</a>`;
       console.log(isTeacher);
       listenForPosts();
     } else {
