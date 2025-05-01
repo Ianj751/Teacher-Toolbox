@@ -1,0 +1,82 @@
+<!-- <form method="post" action="/TeachToolBox.html"></form> -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login - Teacher Toolbox</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="login.css" />
+
+    <script type="module" src="valid.js" defer></script>
+  </head>
+  <body>
+    <div class="login-box">
+      <h1>Login</h1>
+      <div class="login-type-links">
+        <a href="#" class="active" id="teacher-link">Teacher Login</a>
+        <a href="#" id="student-link">Student Login</a>
+      </div>
+      <p id="error-message"></p>
+      <form id="form">
+        <!-- Teacher Login Fields -->
+        <div class="teacher-fields">
+          <input
+            type="text"
+            id="user-input"
+            name="username"
+            placeholder="Email"
+          />
+          <input
+            type="password"
+            id="pass-input"
+            name="password"
+            placeholder="Password"
+          />
+        </div>
+
+        <!-- Student Login Fields -->
+        <div class="student-fields">
+          <input
+            type="text"
+            id="first-name"
+            name="firstname"
+            placeholder="First Name"
+          />
+          <input
+            type="text"
+            id="last-name"
+            name="lastname"
+            placeholder="Last Name"
+          />
+          <input type="text" id="id-input" name="id" placeholder="School ID" />
+        </div>
+
+        <button type="submit" id="submit-button">
+          Login
+          <img
+            src="../assets/login-svgrepo-com.svg"
+            alt=""
+            style="height: 10px"
+          />
+        </button>
+      </form>
+
+      <div id="teacher-options" class="login-options">
+        Don't have an account? <a href="signUpPage/signUp.html">Click here</a>
+        <div class="auth-section" id="login-section">
+          <button id="google-signin" class="google-btn">
+            <img
+              src="https://cdn.cdnlogo.com/logos/g/35/google-icon.svg"
+              width="18"
+              height="18"
+              alt="Google"
+            />
+            Sign in with Google
+          </button>
+        </div>
+      </div>
+
+      <a href="/src/dashboard/dashboard.html">Back to Home</a>
+    </div>
+  </body>
+</html>

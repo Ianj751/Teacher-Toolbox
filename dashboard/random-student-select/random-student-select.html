@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        <link rel="stylesheet" href="../dashboard.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Random Student Select</title>
+        <link rel="stylesheet" href="random-student-select.css" />
+  </head>
+<body>
+    <div class="container">
+        <h1>Random Student Select</h1>
+    </div>
+
+    <div class="box" id="menuButton">
+      <span></span><span></span><span></span>
+      <div class="content" id="menuContent">
+          <a href="../dashboard.html">Home</a>
+          <a href="../../loginPage/login.html">Log in<img src="../assets/login-svgrepo-com.svg" alt="" style="height: 20px"/></a>
+          <a id="log-out-btn">Log out<img src="../assets/logout-svgrepo-com.svg" alt="" style="height: 20px"/></a>
+      </div>
+  </div>
+
+  <body>
+    <div class="random-select-container">
+      <h2>Enter Student Names:</h2>
+      <textarea id="select-names" rows="6" placeholder="Enter names here..."></textarea>
+
+      <button id="select-student">Select Random Student</button>
+      <button id="load-students" class="load-button">Load Students from Roster</button>
+      <div id="result" class="result-box">
+          <h2>Selected Student:</h2>
+          <div id="output"></div>
+      </div>
+    </div>
+    <a href="/src/dashboard/dashboard.html">Temporary link back to home page</a>
+    <script src="random-student-select.js" type="module"></script>
+  </body>
+</html>
+

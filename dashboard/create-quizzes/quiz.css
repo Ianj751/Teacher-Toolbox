@@ -1,0 +1,32 @@
+.quiz_container{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    position: relative;
+}
+.box{
+    background-color: white;
+    border-radius: 15px;
+    margin-top: 5em;
+}
+body{
+    background-color: rgb(71, 132, 218);
+}
+.submit_quiz{
+    border-style: none;
+    height: 50px;
+
+    background-color: rgb(71, 132, 218);
+    border-radius: 2px;
+    cursor: pointer;
+    color: white;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    font-size: 1em;
+    margin: auto;
+    width: 25%;
+    position: relative;
+}
+
+.submit_quiz:hover{
+    background-color: rgb(51, 94, 155);
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Select</title>
+    <link rel="stylesheet" href="../dashboard.css">
+    <link rel="stylesheet" href="teams-select.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Team Select</h1>
+    </div>
+
+    <div class="box" id="menuButton">
+        <span></span><span></span><span></span>
+        <div class="content" id="menuContent">
+            <a href="../dashboard.html">Home</a>
+            <a href="../../loginPage/login.html">Log in<img src="../assets/login-svgrepo-com.svg" alt="" style="height: 20px"/></a>
+            <a id="log-out-btn">Log out<img src="../assets/logout-svgrepo-com.svg" alt="" style="height: 20px"/></a>
+        </div>
+    </div>
+
+    <div class="team-select-container">
+        <h2>Enter Student Names:</h2>
+        <textarea id="student-names" rows="6" placeholder="Enter names here..."></textarea>
+
+        <button id="load-students" class="load-button">Load Students from Roster</button>
+            
+        <label for="number-teams">Number of Teams:</label>
+        <input type="number" id="number-teams" min="2" placeholder="Enter number of teams">
+
+        <button id="generate-teams">Generate Teams</button>
+
+        <table id="team-results" class="team-box">
+            <thead>
+                <tr>
+                    <th>Names</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <script src="team-select.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="student-attendance.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Student Attendance</title>
+    </head>
+<body>
+    <div class="container">
+        <h1>Student Attendance</h1>
+    </div>
+
+    <div class="box" id="menuButton">
+        <span></span><span></span><span></span>
+        <div class="content" id="menuContent">
+            <a href="../student-dashboard.html">Back to Dashboard</a>
+            <a id="log-out-btn">Log out<img src="../assets/logout-svgrepo-com.svg" alt="" style="height: 20px"/></a>
+        </div>
+    </div>
+
+    <div class="student-attendance-container">
+        <div class="student-info">
+            <h2 id="student-name">Loading...</h2>
+            <p id="student-id">ID: Loading...</p>
+        </div>
+        
+        <div class="attendance-stats">
+            <div class="stat-card">
+                <h3>Today's Attendance<div id = todaysDate></div></h3>
+                <p id="today-attendance">Loading...</p>
+            </div>
+            <div class="stat-card">
+                <h3>Overall Attendance</h3>
+                <p id="overall-attendance">Loading...</p>
+            </div>
+        </div>
+
+        <div class="attendance-calendar">
+            <div class="calendar-header">
+                <button id="prevMonth">&lt;</button>
+                <h3 id="currentMonth">Month Year</h3>
+                <button id="nextMonth">&gt;</button>
+            </div>
+            <div class="calendar-weekdays">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+            <div id="calendar-days" class="calendar-days">
+                <!-- Calendar days will be populated here -->
+            </div>
+        </div>
+    </div>
+    <script type="module" src="student-attendance.js"></script>
+</body>
+</html>

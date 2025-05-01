@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="stylesheet" href="../dashboard.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <body>
+    <div class="container">
+      <h1 style="z-index: 10">Roster</h1>
+    </div>
+    <div class="box" id="menuButton">
+      <span></span><span></span><span></span>
+      <!-- Shout out to svgrepo.com -->
+      <div class="content" id="menuContent">
+        <a href="../../dashboard/dashboard.html"
+          >Home<img
+            src="../assets/attendance-svgrepo-com.svg"
+            alt=""
+            style="height: 20px"
+        /></a>
+        <a href="../loginPage/login.html"
+          >Log in<img
+            src="../assets/login-svgrepo-com.svg"
+            alt=""
+            style="height: 20px"
+        /></a>
+        <a href=""
+          >Log out<img
+            src="../assets/logout-svgrepo-com.svg"
+            alt=""
+            style="height: 20px"
+        /></a>
+      </div>
+    </div>
+    <div class="roster-container">
+    
+      <div class="form-section">
+        <label for="studentName">First Name:</label>
+        <input type="text" id="first" placeholder="First Name">
+        <label for="studentLastName">Last Name:</label>
+        <input type="text" id="last" placeholder="Last Name">
+        <label for="studentEmail">ID:</label>
+        <input type="id" id="studentId" placeholder="ID">
+        <button id="addUserBtn">Add Student</button>
+      </div>
+    
+      
+      <div id="output" class="output-section">
+    
+      </div>
+    </div>
+</div>
+
+  <!-- Link to app.js -->
+  <script type="module" src="roster.js"></script>
+</body>
+</html>

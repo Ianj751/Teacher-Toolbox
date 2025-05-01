@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="../dashboard.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Create Quiz</title>
+    </head>
+<body>
+    <div class="container">
+        <h1>Create Quiz</h1>
+    </div>
+
+    <div class="box" id="menuButton">
+        <span></span><span></span><span></span>
+        <div class="content" id="menuContent">
+            <a href="../dashboard.html">Home</a>
+            <a href="../../loginPage/login.html">Log in<img src="../assets/login-svgrepo-com.svg" alt="" style="height: 20px"/></a>
+            <a href="#">Log out<img src="../assets/logout-svgrepo-com.svg" alt="" style="height: 20px"/></a>
+        </div>
+    </div>
+
+    <div class="quiz-form-container">
+        <form id="quizForm">
+            <label for="quizTitle">Quiz Title:</label>
+            <input id="quizName" type="text" placeholder="Enter quiz title" required>
+
+            <label for="quizDescription">Description:</label>
+            <textarea id="description" placeholder="Enter quiz description" rows="4"></textarea>
+
+            <div id="questionsContainer">
+                <div id="question-output">
+                    
+                </div>
+            </div>
+
+            <button class="add-button" type="button" id="addQuestion">Add Question</button>
+            <button onclick="createQuiz()" class="create-quiz"type="submit" id="createQuiz">Create Quiz</button>
+        </form>
+        <div id="error-message" style="display: none; color: red; font-weight: bold; position: absolute; top: 1px; left: 50%; transform: translateX(-50%); background-color: rgba(236, 14, 14, 0.278); padding: 10px; border: 1px solid red; border-radius: 5px; width: 400px; text-align: center;"></div>
+    </div>
+    <script type="module" src="create-quizzes.js"></script>
+</body>
+</html>

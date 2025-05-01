@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="stylesheet" href="classroom-chat.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <body>
+    <div class="container">
+      <h1>Classroom Chat</h1>
+    </div>
+    <div class="box" id="menuButton">
+      <span></span><span></span><span></span>
+      <div class="content" id="menuContent">
+        <div id = "studentOrTeacher">
+        </div>
+        <a href="../../loginPage/login.html"
+          >Log in<img
+            src="../../assets/login-svgrepo-com.svg"
+            alt=""
+            style="height: 20px"
+        /></a>
+        <a href=""
+          >Log out<img
+            src="../../assets/logout-svgrepo-com.svg"
+            alt=""
+            style="height: 20px"
+        /></a>
+      </div>
+    </div>
+    <!-- <my-post style="padding-top: 2rem;">
+        <span slot="content">This is a localized component!</span>
+        <span slot="author">@Ian Jackson</span>
+      </my-post> -->
+    <div id="posts"></div>
+
+    <form action="" id="msg-form">
+      <input type="text" name="message" id="form-msg" required />
+      <input type="submit" value="send" />
+    </form>
+
+    <script type="module" src="classroom-chat.js"></script>
+    <script type="module" src="post.js" defer></script>
+  </body>
+</html>

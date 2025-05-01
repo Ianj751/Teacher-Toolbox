@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Performance</title>
+    <link rel="stylesheet" href="../dashboard.css">
+    <link rel="stylesheet" href="review-performance.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Review Performance</h1>
+    </div>
+    <div class="box" id="menuButton">
+      <span></span><span></span><span></span>
+      <div class="content" id="menuContent">
+        <a href="../dashboard.html">Home</a>
+        <a href="../../loginPage/login.html">Log in<img src="../assets/login-svgrepo-com.svg" alt="" style="height: 20px"/></a>
+        <a id="log-out-btn">Log out<img src="../assets/logout-svgrepo-com.svg" alt="" style="height: 20px"/></a>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="search-bar-row">
+        <!-- <select id="class-filter">
+          <option value="">Select Class</option>
+        </select> -->
+        <input type="text" id="search-student" placeholder="Search">
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Subject</th>
+            <th>Grade</th>
+            <th>Attendance</th>
+          </tr>
+        </thead>
+        <tbody id="performance-table">
+          <!-- Student rows will be added here -->
+        </tbody>
+      </table>
+    </div>
+    <script type="module" src="review-performance.js"></script>
+  </body>
+</html>
+
