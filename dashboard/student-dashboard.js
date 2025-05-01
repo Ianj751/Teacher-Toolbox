@@ -2,7 +2,7 @@ import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { firebaseConfig } from "../firebase/firebaseconfig.js";
-import { db } from "./firebase/init.js";
+import { db } from "../firebase/init.js";
 import {
   doc,
   getDoc,
