@@ -23,7 +23,7 @@ document.getElementById("log-out-btn").onclick = window.signOutUser =
       sessionStorage.removeItem("firebaseID");
 
       // Redirect to login page
-      window.location.href = "/loginPage/login.html";
+      window.location.href = "/Teacher-Toolbox/index.html";
     } catch (error) {
       console.error("Error signing out:", error);
     }

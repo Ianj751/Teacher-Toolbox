@@ -18,7 +18,7 @@ export function protectRoute() {
     if (!user) {
       // Redirect to login if not authenticated
       alert("You must be logged in to view this page");
-      window.location.href = "/loginPage/login.html";
+      window.location.href = "/Teacher-Toolbox/index.html";
     }
   });
 }
