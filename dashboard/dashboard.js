@@ -1,5 +1,5 @@
 //import { protectRoute } from "../firebase/init.js";
-import { auth } from "firebase/init.js";
+import { auth } from "./firebase/init.js";
 import { signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 //protectRoute();
 var menuButton = document.getElementById("menuButton");
@@ -23,7 +23,7 @@ document.getElementById("log-out-btn").onclick = window.signOutUser =
       sessionStorage.removeItem("firebaseID");
 
       // Redirect to login page
-      window.location.href = "/Teacher-Toolbox/index.html";
+      window.location.href = "../index.html";
     } catch (error) {
       console.error("Error signing out:", error);
     }
