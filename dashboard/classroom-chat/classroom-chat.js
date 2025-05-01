@@ -20,16 +20,14 @@ const studentLastName = sessionStorage.getItem("studentLastName");
 const studentId = sessionStorage.getItem("firebaseID");
 const teacherUid = sessionStorage.getItem("teacherUid");
 
-
-const outputDiv = document.getElementById('studentOrTeacher');
-
+const outputDiv = document.getElementById("studentOrTeacher");
 
 if (studentFirstName && studentLastName && studentId && teacherUid) {
   // User is a student
   console.log("Student signed in:", studentFirstName, studentLastName);
   user = teacherUid;
   isTeacher = false;
-  outputDiv.innerHTML = `<a href="../student-dashboard.html">Home</a>`
+  outputDiv.innerHTML = `<a href="../student-dashboard.html">Home</a>`;
   listenForPosts();
 } else {
   // Check if the user is a teacher
@@ -38,8 +36,8 @@ if (studentFirstName && studentLastName && studentId && teacherUid) {
       console.log("Teacher signed in:", currentUser);
       user = currentUser.uid;
       isTeacher = true;
-        outputDiv.innerHTML = `<a href="../dashboard.html">Home</a>`
-      console.log(isTeacher)
+      outputDiv.innerHTML = `<a href="/Teacher-Toolbox/dashboard/dashboard.html">Home</a>`;
+      console.log(isTeacher);
       listenForPosts();
     } else {
       console.error("No valid user found. Please sign in.");
@@ -47,9 +45,8 @@ if (studentFirstName && studentLastName && studentId && teacherUid) {
     }
   });
 }
-console.log(isTeacher+ " isTeacher")
+console.log(isTeacher + " isTeacher");
 //check if the user is a student or teacher, then create the appropriate link in the hamburger menu
-
 
 var menuButton = document.getElementById("menuButton");
 var menuContent = document.getElementById("menuContent");
