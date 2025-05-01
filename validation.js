@@ -1,4 +1,7 @@
-import { createUserWithEmailAndPassword, getAuth } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+} from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 
 const form = document.getElementById("form");
 const email = document.getElementById("email-input");
@@ -36,7 +39,7 @@ form.addEventListener("submit", (e) => {
       .then((userCredential) => {
         // Signed in successfully
         const user = auth.currentUser;
-        window.location.pathname = "/src/dashboard/student-dashboard.html";
+        window.location.pathname = "/dashboard/student-dashboard.html";
       })
       .catch((error) => {
         e.preventDefault();

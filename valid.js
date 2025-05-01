@@ -114,25 +114,6 @@ async function handleTeacherLogin() {
   const password = passwordInput.value.trim();
 
   createUserIfNotExists(username, password);
-
-  /* if (!username || !password) {
-    displayError("Please enter both username and password");
-    return;
-  }
-
-  try {
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      username,
-      password
-    );
-    const user = userCredential.user;
-    console.log("Teacher signed up:", user);
-    clearError();
-    window.location.href = "/src/dashboard/dashboard.html";
-  } catch (error) {
-    handleAuthError(error);
-  } */
 }
 
 // Handle student login
@@ -243,7 +224,7 @@ googleSignInBtn.addEventListener("click", async () => {
         lastLogin: new Date(),
       });
     }
-    window.location.href = "/src/dashboard/dashboard.html";
+    window.location.href = "/dashboard/dashboard.html";
   } catch (error) {
     handleAuthError(error);
   }
