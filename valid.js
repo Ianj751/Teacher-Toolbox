@@ -82,11 +82,13 @@ function createUserIfNotExists(email, password) {
       .then((userCredential) => {
         console.log("User exists, signed in:", userCredential.user.email);
         resolve(userCredential.user);
-        window.location.href = "./dashboard/dashboard.html";
+        window.location.href = "../dashboard/dashboard.html";
       })
       .catch((error) => {
-        handleAuthError(error);
-        if (error.code === "auth/user-not-found") {
+        if (
+          error.code === "auth/user-not-found" ||
+          error.code === "auth/invalid-credential"
+        ) {
           console.log("User doesn't exist, creating new account...");
 
           createUserWithEmailAndPassword(auth, email, password)
@@ -96,12 +98,15 @@ function createUserIfNotExists(email, password) {
                 userCredential.user.email
               );
               resolve(userCredential.user);
+              window.location.href = "../dashboard/dashboard.html";
             })
             .catch((createError) => {
+              handleAuthError(createError);
               reject(createError);
             });
         } else {
           console.error("Error signing in:", error);
+          handleAuthError(error);
           reject(error);
         }
       });
