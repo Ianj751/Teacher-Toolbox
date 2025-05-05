@@ -80,9 +80,13 @@ function createUserIfNotExists(email, password) {
     // First try to sign in
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log("User exists, signed in:", userCredential.user.email);
+        console.log(
+          "User exists, signed in:",
+          userCredential.user.email,
+          userCredential.user.displayName
+        );
         resolve(userCredential.user);
-        window.location.href = "../dashboard/dashboard.html";
+        window.location.href = "./dashboard/dashboard.html";
       })
       .catch((error) => {
         if (
@@ -98,7 +102,7 @@ function createUserIfNotExists(email, password) {
                 userCredential.user.email
               );
               resolve(userCredential.user);
-              window.location.href = "../dashboard/dashboard.html";
+              window.location.href = "./dashboard/dashboard.html";
             })
             .catch((createError) => {
               handleAuthError(createError);
